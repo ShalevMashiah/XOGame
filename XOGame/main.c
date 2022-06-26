@@ -163,11 +163,15 @@ void displayBoard()
     fptr = fopen("file2.txt", "r");
     int num1;
     fscanf(fptr, "%d", &num1);
-    printf("\n\tThe Highest Score for player1 : %d", num1);
+    printf("\nHighest score : ");
+    printf("\t Player 1: %d", num1);
+    fclose(fptr);
+
     fPtr = fopen("file1.txt", "r");
     int num2;
     fscanf(fPtr, "%d", &num2);
-    printf("\nThe Highest Score for player2 : %d", num2);
+    printf("\t\t Player 2: %d", num2);
+    fclose(fPtr);
 
     printf("\nScore :");
     printf("\t Player 1: %d", sPlayer1);
