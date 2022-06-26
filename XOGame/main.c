@@ -90,36 +90,35 @@ int main()
 int startover()
 {
     int yesorno = 0;
-    
-  printf("Do you want to play again? Yes ==> 1  : No ==> 2  ");
-  scanf_s("%d", &yesorno);
-  if (yesorno == 1)
-  {
-      
-      square[0] = 'o';
-      square[1] = '1';
-      square[2] = '2';
-      square[3] = '3';
-      square[4] = '4';
-      square[5] = '5';
-      square[6] = '6';
-      square[7] = '7';
-      square[8] = '8';
-      square[9] = '9';
-      main();
 
-  }
-  else if (yesorno = 2)
-  {
-      printf("Ok Bye");
-      return 0;
-  }
-  else
-  {
-      printf("Wrong number, please try again");
-          startover();
-  }
+    printf("\nDo you want to play again? Yes ==> 1  : No ==> 2  ");
+    scanf_s("%d", &yesorno);
+    if (yesorno == 1)
+    {
 
+        square[0] = 'o';
+        square[1] = '1';
+        square[2] = '2';
+        square[3] = '3';
+        square[4] = '4';
+        square[5] = '5';
+        square[6] = '6';
+        square[7] = '7';
+        square[8] = '8';
+        square[9] = '9';
+        main();
+
+    }
+    else if (yesorno == 2)
+    {
+        printf("Ok Bye");
+        return 0;
+    }
+    else
+    {
+        printf("Wrong number, please try again");
+        startover();
+    }
 }
 
 void displayBoard()
