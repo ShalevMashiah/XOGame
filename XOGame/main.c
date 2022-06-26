@@ -16,8 +16,8 @@ int main()
     char mark;
     player = 1;
 
-    do
-    {
+    do{
+    
         displayBoard();
         // החלפת שחקנים
         if (player % 2 == 0)
@@ -30,7 +30,7 @@ int main()
         }
 
         printf("Player %d,enter a number: ", player);
-        scanf("%d", &choice);
+        scanf_s("%d", &choice);
 
         if (player == 1)
         {
@@ -47,7 +47,14 @@ int main()
                 player++;
         }
 
-  }
+    } while (Status == -1);
+
+    if(Status == 1)
+        printf("==>Player %d win \n\n", --player);
+    else {
+        printf("==>Game draw\n\n");
+    }
+    return 0;  
 }
 
 void displayBoard()
