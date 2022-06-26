@@ -79,7 +79,17 @@ int main()
 
     if (Status == 1) {
         printf("==>Player %d win \n\n", --player);
-        startover();
+        
+        if (player % 2 == 0)
+        {
+            sPlayer2++;
+            startover();
+        }
+        else
+        {
+            sPlayer1++;
+            startover();
+        }
     }
     else {
         printf("==>Game draw\n\n");
@@ -125,8 +135,8 @@ void displayBoard()
 {
     system("cls"); // To clear the screen
 
-
-
+    
+    
     printf("Score :");
     printf("\t Player 1: %d", sPlayer1);
     printf("\t\t Player 2: %d", sPlayer2);
