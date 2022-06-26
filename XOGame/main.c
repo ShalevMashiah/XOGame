@@ -12,8 +12,42 @@ void markBoard(char mark);
 
 int main()
 {
+    int Status;
+    char mark;
+    player = 1;
 
+    do
+    {
+        displayBoard();
+        // החלפת שחקנים
+        if (player % 2 == 0)
+        {
+            player = 2;
+        }
+        else
+        {
+            player = 1;
+        }
 
+        printf("Player %d,enter a number: ", player);
+        scanf("%d", &choice);
+
+        if (player == 1)
+        {
+            mark = 'X';
+            markBoard(mark);
+            Status = Winner();
+            player++;
+        }
+        else
+        {
+                mark = 'O';
+                markBoard(mark);
+                Status = Winner();
+                player++;
+        }
+
+  }
 }
 
 void displayBoard()
