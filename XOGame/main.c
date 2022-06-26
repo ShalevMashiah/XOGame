@@ -133,23 +133,6 @@ int startover()
         square[7] = '7';
         square[8] = '8';
         square[9] = '9';
-        //if (ssp1 > sPlayer1)
-        //{
-        //    printf("New HighScore Player1 %d !!!", ssp1);
-        //    system("pause");
-        //    f1 = fopen("file1.txt", "w");
-        //    fprintf(f1, "%d", ssp1);
-        //    fclose(f1);
-        //}
-        //if (ssp2 > sPlayer2)
-        //{
-        //    printf("New HighScore Player2 %d !!!", ssp2);
-        //    system("pause");
-        //    f2 = fopen("file2.txt", "w");
-        //    fprintf(f2, "%d", ssp2);
-        //    fclose(f2);
-        //}
-
         main();
 
     }
@@ -190,20 +173,6 @@ void displayBoard()
         printf("\nHighest score : ");
         printf(" Player 1: %d", ssp1);
         printf("\t\t Player 2: %d", ssp2);
-    
-
- //======== 
-    //fptr = fopen("file2.txt", "r");
-    //fscanf(fptr, "%d", &sPlayer1);
-    //printf("\nHighest score : ");
-    //printf(" Player 1: %d", sPlayer1);
-    //fclose(fptr);
-
-    //fPtr = fopen("file1.txt", "r");
-    //fscanf(fPtr, "%d", &sPlayer2);
-    //printf("\t\t Player 2: %d", sPlayer2);
-    //fclose(fPtr);
-//========
 
     printf("\n\n\n\t\tTic Tac Toe\n\n");
 
