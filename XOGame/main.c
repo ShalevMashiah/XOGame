@@ -5,15 +5,13 @@
 
 char square[10] = { 'o', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
 int choice, player;
+char mark;
 
 int Winner();
 void displayBoard();
-void markBoard(char mark);
-
 int main()
 {
     int Status;
-    char mark;
     player = 1;
 
     do{
@@ -32,25 +30,50 @@ int main()
         printf("Player %d,enter a number: ", player);
         scanf_s("%d", &choice);
 
-        if (player == 1)
-        {
-            mark = 'X';
-            markBoard(mark);
-            Status = Winner();
-            player++;
-        }
+        mark = (player == 1) ? 'X' : 'O';
+
+        if (choice == 1 && square[1] == '1')
+            square[1] = mark;
+
+        else if (choice == 2 && square[2] == '2')
+            square[2] = mark;
+
+        else if (choice == 3 && square[3] == '3')
+            square[3] = mark;
+
+        else if (choice == 4 && square[4] == '4')
+            square[4] = mark;
+
+        else if (choice == 5 && square[5] == '5')
+            square[5] = mark;
+
+        else if (choice == 6 && square[6] == '6')
+            square[6] = mark;
+
+        else if (choice == 7 && square[7] == '7')
+            square[7] = mark;
+
+        else if (choice == 8 && square[8] == '8')
+            square[8] = mark;
+
+        else if (choice == 9 && square[9] == '9')
+            square[9] = mark;
         else
         {
-                mark = 'O';
-                markBoard(mark);
-                Status = Winner();
-                player++;
-        }
+            printf("Invalid move ");
 
+            player--;
+        }
+        Status = Winner();
+
+        player++;
     } while (Status == -1);
 
-    if(Status == 1)
+    displayBoard();
+
+    if (Status == 1) {
         printf("==>Player %d win \n\n", --player);
+    }
     else {
         printf("==>Game draw\n\n");
     }
@@ -59,7 +82,7 @@ int main()
 
 void displayBoard()
 {
-    system("cls"); //clear 
+    system("cls"); // To clear the screen
 
     printf("\n\n\t\tTic Tac Toe\n\n");
 
@@ -121,44 +144,6 @@ int Winner()
 }
 
 
-void markBoard(char mark)
-{
-    if (choice == 1 && square[1] == '1')
-        square[1] = mark;
-
-    else if (choice == 2 && square[2] == '2')
-        square[2] = mark;
-
-    else if (choice == 3 && square[3] == '3')
-        square[3] = mark;
-
-    else if (choice == 4 && square[4] == '4')
-        square[4] = mark;
-
-    else if (choice == 5 && square[5] == '5')
-        square[5] = mark;
-
-    else if (choice == 6 && square[6] == '6')
-        square[6] = mark;
-
-    else if (choice == 7 && square[7] == '7')
-        square[7] = mark;
-
-    else if (choice == 8 && square[8] == '8')
-        square[8] = mark;
-
-    else if (choice == 9 && square[9] == '9')
-        square[9] = mark;
-    else
-    {
-        printf("Invalid step Please try again");
-
-        player--;
-    }
-
-
-
-}
 
 
 
