@@ -1,21 +1,22 @@
 #include <stdio.h>
 #include <stdlib.h>
-
-#define _CRT_SECURE_NO_WARNINGS
-
+#define _CRT_SECURE_NO_DEPRECATE  
+#define _CRT_NONSTDC_NO_DEPRECATE
 char square[10] = { 'o', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
 int choice, player;
 char mark;
-int sPlayer1=0;
-int sPlayer2=0;
+int sPlayer1;
+int sPlayer2;
+int ssp1 = 0;
+int ssp2 = 0;
 
 int Winner();
 void displayBoard();
 int startover();
-int name();
 
-FILE* fPtr;
-FILE* fptr;
+
+FILE *f1;
+FILE *f2;
 
 int main()
 {
@@ -23,7 +24,6 @@ int main()
     player = 1;
 
     do{
-    
         displayBoard();
         // החלפת שחקנים
         if (player % 2 == 0)
@@ -78,41 +78,32 @@ int main()
     } while (Status == -1);
 
     displayBoard();
+
     if (Status == 1) {
         printf("==>Player %d win \n\n", --player);
         
         if (player % 2 == 0)
         {
             sPlayer2++;
-            
-            
-            fPtr = fopen("file1.txt", "w");
-            if (fPtr == NULL)
+            if (ssp2 < sPlayer2)
             {
-                /* File not created hence exit */
-                printf("Unable to create file.\n");
-                exit(EXIT_FAILURE);
-            }
-            fprintf(fPtr, "%d", sPlayer2);
-            fclose(fPtr);
-
-            fclose(fPtr);
+                printf("New HighScore Player (2) %d !!!", sPlayer2);
+                f2 = fopen("file2.txt", "w");
+                fprintf(f2, "%d", sPlayer2);
+                fclose(f2);
+            }   
             startover();
         }
         else
         {
-            sPlayer1++;
-            char data[100];
-            
-            fptr = fopen("file2.txt", "w");
-            if (fptr == NULL)
+            sPlayer1++;    
+            if (ssp1 < sPlayer1)
             {
-                /* File not created hence exit */
-                printf("Unable to create file.\n");
-                exit(EXIT_FAILURE);
+                printf("New HighScore Player (1) %d !!!", sPlayer1);
+                f1 = fopen("file1.txt", "w");
+                fprintf(f1, "%d", sPlayer1);
+                fclose(f1);
             }
-            fprintf(fptr, "%d", sPlayer1);
-            fclose(fptr);
             startover();
         }
     }
@@ -122,6 +113,8 @@ int main()
     }
 }
 
+
+
 int startover()
 {
     int yesorno = 0;
@@ -130,7 +123,6 @@ int startover()
     scanf_s("%d", &yesorno);
     if (yesorno == 1)
     {
-
         square[0] = 'o';
         square[1] = '1';
         square[2] = '2';
@@ -141,17 +133,35 @@ int startover()
         square[7] = '7';
         square[8] = '8';
         square[9] = '9';
+        //if (ssp1 > sPlayer1)
+        //{
+        //    printf("New HighScore Player1 %d !!!", ssp1);
+        //    system("pause");
+        //    f1 = fopen("file1.txt", "w");
+        //    fprintf(f1, "%d", ssp1);
+        //    fclose(f1);
+        //}
+        //if (ssp2 > sPlayer2)
+        //{
+        //    printf("New HighScore Player2 %d !!!", ssp2);
+        //    system("pause");
+        //    f2 = fopen("file2.txt", "w");
+        //    fprintf(f2, "%d", ssp2);
+        //    fclose(f2);
+        //}
+
         main();
 
     }
     else if (yesorno == 2)
     {
+
         printf("Ok Bye");
         return 0;
     }
     else
     {
-        printf("Wrong number, please try again");
+        printf("Wrong number, please try again");  
         startover();
     }
 }
@@ -160,41 +170,59 @@ void displayBoard()
 {
     system("cls"); // To clear the screen
 
-    fptr = fopen("file2.txt", "r");
-    int num1;
-    fscanf(fptr, "%d", &num1);
-    printf("\nHighest score : ");
-    printf("\t Player 1: %d", num1);
-    fclose(fptr);
 
-    fPtr = fopen("file1.txt", "r");
-    int num2;
-    fscanf(fPtr, "%d", &num2);
-    printf("\t\t Player 2: %d", num2);
-    fclose(fPtr);
+        printf("\nScoreBoard :");
+        printf("\t Player 1: %d", sPlayer1);
+        printf("\t\t Player 2: %d", sPlayer2);
+        printf("\n");
+     
 
-    printf("\nScore :");
-    printf("\t Player 1: %d", sPlayer1);
-    printf("\t\t Player 2: %d", sPlayer2);
+        f1 = fopen("file1.txt", "r");
+        fscanf(f1, "%d", &ssp1);
+        fclose(f1);
+
+        f2 = fopen("file2.txt", "r");
+        fscanf(f2, "%d", &ssp2);
+        fclose(f2);
+
+   
+
+        printf("\nHighest score : ");
+        printf(" Player 1: %d", ssp1);
+        printf("\t\t Player 2: %d", ssp2);
+    
+
+ //======== 
+    //fptr = fopen("file2.txt", "r");
+    //fscanf(fptr, "%d", &sPlayer1);
+    //printf("\nHighest score : ");
+    //printf(" Player 1: %d", sPlayer1);
+    //fclose(fptr);
+
+    //fPtr = fopen("file1.txt", "r");
+    //fscanf(fPtr, "%d", &sPlayer2);
+    //printf("\t\t Player 2: %d", sPlayer2);
+    //fclose(fPtr);
+//========
 
     printf("\n\n\n\t\tTic Tac Toe\n\n");
 
     printf("\n       Player 1 (X)  -  Player 2 (O)\n\n\n");
 
-    printf("\n\t          |     |     \n");
-    printf("\n\t       %c  |  %c  |  %c \n", square[1], square[2], square[3]);
+    printf("\t          |     |     \n");
+    printf("\t       %c  |  %c  |  %c \n", square[1], square[2], square[3]);
 
-    printf("\n\t     _____|_____|_____\n");
-    printf("\n\t          |     |     \n");
+    printf("\t     _____|_____|_____\n");
+    printf("\t          |     |     \n");
 
-    printf("\n\t       %c  |  %c  |  %c \n", square[4], square[5], square[6]);
+    printf("\t       %c  |  %c  |  %c \n", square[4], square[5], square[6]);
 
-    printf("\n\t     _____|_____|_____\n");
-    printf("\n\t          |     |     \n");
+    printf("\t     _____|_____|_____\n");
+    printf("\t          |     |     \n");
    
-    printf("\n\t       %c  |  %c  |  %c \n", square[7], square[8], square[9]);
+    printf("\t       %c  |  %c  |  %c \n", square[7], square[8], square[9]);
 
-    printf("\n\t          |     |     \n\n");
+    printf("\t          |     |     \n\n");
 }
 
 int Winner()
