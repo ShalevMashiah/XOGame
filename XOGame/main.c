@@ -15,8 +15,6 @@ int startover();
 
 int main()
 {
-    
-
     int Status;
     player = 1;
 
@@ -199,7 +197,6 @@ int Winner()
 
     return result;
 }
-
 
 
 
