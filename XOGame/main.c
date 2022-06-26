@@ -6,11 +6,17 @@
 char square[10] = { 'o', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
 int choice, player;
 char mark;
+int sPlayer1=0;
+int sPlayer2=0;
 
 int Winner();
 void displayBoard();
+int startover();
+
 int main()
 {
+    
+
     int Status;
     player = 1;
 
@@ -73,16 +79,58 @@ int main()
 
     if (Status == 1) {
         printf("==>Player %d win \n\n", --player);
+        startover();
     }
     else {
         printf("==>Game draw\n\n");
+        startover();
     }
-    return 0;  
+}
+
+int startover()
+{
+    int yesorno = 0;
+    
+  printf("Do you want to play again? Yes ==> 1  : No ==> 2  ");
+  scanf_s("%d", &yesorno);
+  if (yesorno == 1)
+  {
+      
+      square[0] = 'o';
+      square[1] = '1';
+      square[2] = '2';
+      square[3] = '3';
+      square[4] = '4';
+      square[5] = '5';
+      square[6] = '6';
+      square[7] = '7';
+      square[8] = '8';
+      square[9] = '9';
+      main();
+
+  }
+  else if (yesorno = 2)
+  {
+      printf("Ok Bye");
+      return 0;
+  }
+  else
+  {
+      printf("Wrong number, please try again");
+          startover();
+  }
+
 }
 
 void displayBoard()
 {
     system("cls"); // To clear the screen
+
+
+
+    printf("Score :");
+    printf("\t Player 1: %d", sPlayer1);
+    printf("\t\t Player 2: %d", sPlayer2);
 
     printf("\n\n\t\tTic Tac Toe\n\n");
 
